@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  acars-sink:
+    build: .
+    container_name: acars-sink
+    restart: unless-stopped
+    ports:
+      - "5555:5555/udp"
+      - "5555:5555/tcp"
+      - "5556:5556/tcp"
+    volumes:
+      - acars-data:/data
+
+volumes:
+  acars-data:
